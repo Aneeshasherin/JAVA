@@ -1,0 +1,97 @@
+import java.util.Scanner;
+
+class Publisher {
+    String publisherName;
+
+    Publisher(String pname) {
+        publisherName = pname;
+    }
+}
+
+class Book extends Publisher {
+    String bookName, author;
+
+    Book(String pname, String bname, String auth) {
+        super(pname);
+        bookName = bname;
+        author = auth;
+    }
+}
+
+class Literature extends Book {
+
+    Literature(String pname, String bname, String auth) {
+        super(pname, bname, auth);
+    }
+
+    void display() {
+        System.out.println("Literature Book -> " + bookName + " " + author + " " + publisherName);
+    }
+}
+
+class Fiction extends Book {
+
+    Fiction(String pname, String bname, String auth) {
+        super(pname, bname, auth);
+    }
+
+    void display() {
+        System.out.println("Fiction Book -> " + bookName + " " + author + " " + publisherName);
+    }
+}
+
+class co3p4 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of books: ");
+        int n = sc.nextInt();
+        sc.nextLine();
+
+        Literature[] l = new Literature[n];
+        Fiction[] f = new Fiction[n];
+
+        // Literature input
+        System.out.println("\nEnter Literature Books:");
+        for (int i = 0; i < n; i++) {
+            System.out.print("Publisher: ");
+            String pname = sc.nextLine();
+
+            System.out.print("Book Name: ");
+            String bname = sc.nextLine();
+
+            System.out.print("Author: ");
+            String auth = sc.nextLine();
+
+            l[i] = new Literature(pname, bname, auth);
+        }
+
+        // Fiction input
+        System.out.println("\nEnter Fiction Books:");
+        for (int i = 0; i < n; i++) {
+            System.out.print("Publisher: ");
+            String pname = sc.nextLine();
+
+            System.out.print("Book Name: ");
+            String bname = sc.nextLine();
+
+            System.out.print("Author: ");
+            String auth = sc.nextLine();
+
+            f[i] = new Fiction(pname, bname, auth);
+        }
+
+        // Display
+        System.out.println("\n--- Literature Details ---");
+        for (int i = 0; i < n; i++) {
+            l[i].display();
+        }
+
+        System.out.println("\n--- Fiction Details ---");
+        for (int i = 0; i < n; i++) {
+            f[i].display();
+        }
+
+        sc.close();
+    }
+}
